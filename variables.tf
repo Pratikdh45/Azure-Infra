@@ -1,7 +1,7 @@
 variable "resource_group_name" {
   description = "The name of the Azure resource group"
   type        = string
-  default     = "azure-infra-rg"
+  default     = "Name"
 }
 
 variable "location" {
@@ -13,7 +13,7 @@ variable "location" {
 variable "project_name" {
   description = "Project name prefix for resources"
   type        = string
-  default     = "azureinfra"
+  default     = "Name"
 }
 
 variable "vnet_cidr" {
@@ -37,20 +37,20 @@ variable "private_subnet_cidr" {
 variable "db_admin_username" {
   description = "Database administrator username"
   type        = string
-  default     = "azureuser"
+  default     = "Username"
 }
 
 variable "db_admin_password" {
   description = "Database administrator password"
   type        = string
   sensitive   = true
-  default     = "Azureinfrapassword.45#@"
+  default     = "<Add Password>
 }
 
 variable "acr_name" {
   description = "Azure Container Registry Name"
   type        = string
-  default     = "azureinfraacr"
+  default     = "Name"
 }
 
 variable "acr_sku" {
