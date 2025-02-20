@@ -1,7 +1,7 @@
 variable "resource_group_name" {
   description = "The name of the Azure resource group"
   type        = string
-  default     = "Name"
+  default     = "azure-infra-rg-testing"
 }
 
 variable "location" {
@@ -13,7 +13,7 @@ variable "location" {
 variable "project_name" {
   description = "Project name prefix for resources"
   type        = string
-  default     = "Name"
+  default     = "azureinfratesting"
 }
 
 variable "vnet_cidr" {
@@ -34,23 +34,23 @@ variable "private_subnet_cidr" {
   default     = "10.0.2.0/24"
 }
 
-variable "db_admin_username" {
-  description = "Database administrator username"
+variable "username" {
+  description = "username"
   type        = string
-  default     = "Username"
+  default     = "azureuser"
 }
 
-variable "db_admin_password" {
-  description = "Database administrator password"
+variable "password" {
+  description = "password"
   type        = string
   sensitive   = true
-  default     = "<Add Password>
+  default     = "Azureinfrapassword.45#@"
 }
 
 variable "acr_name" {
   description = "Azure Container Registry Name"
   type        = string
-  default     = "Name"
+  default     = "azureinfraacrtesting"
 }
 
 variable "acr_sku" {
@@ -62,6 +62,20 @@ variable "acr_sku" {
 variable "mysql_flexible_server_location" {
   description = "Region for MySQL Flexible Server (must support the service)"
   type        = string
-  default     = "East US"
+  default     = "Central US"
 }
 
+variable "user_principal_name" {
+  type    = string
+  default = "vmadmin"
+}
+
+variable "display_name" {
+  type    = string
+  default = "vmadmin"
+}
+
+variable "mail_nickname" {
+  type    = string
+  default = "vmadmin"
+}

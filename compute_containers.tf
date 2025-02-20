@@ -9,10 +9,10 @@ resource "azurerm_public_ip" "frontend_ip" {
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location
   allocation_method   = "Static"
-  sku                 = "Standard" 
+  sku                 = "Standard"
 
   lifecycle {
-    ignore_changes = [ sku ]
+    ignore_changes = [sku]
   }
 }
 
@@ -27,7 +27,7 @@ resource "azurerm_network_interface" "frontend" {
     subnet_id                     = azurerm_subnet.private.id
     private_ip_address_allocation = "Static"
     public_ip_address_id          = azurerm_public_ip.frontend_ip.id
-    private_ip_address            = "10.0.2.5" 
+    private_ip_address            = "10.0.2.5"
   }
 }
 
@@ -57,8 +57,8 @@ resource "azurerm_linux_virtual_machine" "frontend" {
 
 
   computer_name                   = "frontend"
-  admin_username                  = var.db_admin_username
-  admin_password                  = var.db_admin_password
+  admin_username                  = var.username
+  admin_password                  = var.password
   disable_password_authentication = false
 }
 
@@ -100,11 +100,11 @@ resource "null_resource" "frontend_provision" {
   }
   connection {
     type     = "ssh"
-    user     = var.db_admin_username
-    password = var.db_admin_password
+    user     = var.username
+    password = var.password
     host     = azurerm_public_ip.frontend_ip.ip_address
   }
-} 
+}
 
 
 
@@ -117,10 +117,10 @@ resource "azurerm_public_ip" "backend_ip" {
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location
   allocation_method   = "Static"
-  sku                 = "Standard" 
+  sku                 = "Standard"
 
   lifecycle {
-    ignore_changes = [ sku ]
+    ignore_changes = [sku]
   }
 }
 
@@ -135,7 +135,7 @@ resource "azurerm_network_interface" "backend" {
     subnet_id                     = azurerm_subnet.private.id
     private_ip_address_allocation = "Static"
     private_ip_address            = "10.0.2.6"
-    public_ip_address_id          = azurerm_public_ip.backend_ip.id  
+    public_ip_address_id          = azurerm_public_ip.backend_ip.id
   }
 }
 
@@ -164,8 +164,8 @@ resource "azurerm_linux_virtual_machine" "backend" {
   }
 
   computer_name                   = "backend"
-  admin_username                  = var.db_admin_username
-  admin_password                  = var.db_admin_password
+  admin_username                  = var.username
+  admin_password                  = var.password
   disable_password_authentication = false
 
 }
@@ -208,8 +208,8 @@ resource "null_resource" "backend_provision" {
   }
   connection {
     type     = "ssh"
-    user     = var.db_admin_username
-    password = var.db_admin_password
+    user     = var.username
+    password = var.password
     host     = azurerm_public_ip.backend_ip.ip_address
   }
-} 
+}

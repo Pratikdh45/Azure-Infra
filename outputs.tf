@@ -47,3 +47,7 @@ output "acr_login_server" {
   description = "Azure Container Registry Login Server"
   value       = azurerm_container_registry.acr.login_server
 }
+
+output "lb_public_ip" {
+  value = azurerm_public_ip.lb.ip_address
+}
