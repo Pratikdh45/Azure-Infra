@@ -8,6 +8,8 @@ resource "azurerm_lb_rule" "frontend_rule" {
   backend_port                   = 80
   backend_address_pool_ids       = [azurerm_lb_backend_address_pool.frontend_pool.id]
   probe_id                       = azurerm_lb_probe.frontend_probe.id
+  enable_tcp_reset               = false
+
 }
 
 resource "azurerm_lb_rule" "backend_rule" {
@@ -19,4 +21,5 @@ resource "azurerm_lb_rule" "backend_rule" {
   backend_port                   = 8080
   backend_address_pool_ids       = [azurerm_lb_backend_address_pool.backend_pool.id]
   probe_id                       = azurerm_lb_probe.backend_probe.id
+  enable_tcp_reset               = false
 }

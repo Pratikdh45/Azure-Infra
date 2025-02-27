@@ -13,7 +13,6 @@ resource "azurerm_role_assignment" "frontend_vm_role" {
   principal_id         = azuread_user.vm_admin.object_id
 }
 
-
 # Assign Role to VNet
 resource "azurerm_role_assignment" "vnet_role" {
   scope                = azurerm_virtual_network.main.id # Replace with your actual VNet resource

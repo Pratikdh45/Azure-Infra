@@ -79,3 +79,45 @@ variable "mail_nickname" {
   type    = string
   default = "vmadmin"
 }
+
+variable "cluster_name" {
+  description = "k8s cluster name"
+  type        = string
+  default     = "azure-infra-k8s-testing"
+}
+
+variable "k8s_name" {
+  description = "k8s name"
+  type        = string
+  default     = "k8s-testing"
+}
+
+variable "replica_count" {
+  description = "k8s replica count"
+  type        = string
+  default     = "3"
+}
+
+variable "container_port" {
+  description = "container-port"
+  type        = string
+  default     = "80"
+}
+
+variable "target_port" {
+  description = "target-port"
+  type        = string
+  default     = "80"
+}
+
+variable "port" {
+  description = "port"
+  type        = string
+  default     = "80"
+}
+
+variable "create_role" {
+  description = "Flag to control role assignment creation"
+  type        = bool
+  default     = false # Set to true only if you want Terraform to create the role
+}
